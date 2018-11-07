@@ -2,17 +2,20 @@
 
 const radixSort = require('../src/radix/radix');
 
+const testArray1 = [9, 5, 6, 2, 3, 1, 4];
+const emptyArray = [];
+
 describe('#radix.js', () => {
   test('Should return a sorted list', () => {
-    let testArray1 = [9, 5, 6, 2, 3, 1, 4, 8, 91];
-    expect(radixSort.sort(testArray1)).toEqual(true);
+    const newArray = radixSort.sort(testArray1);
+    expect(newArray).toEqual([1, 2, 3, 4, 5, 6, 9]);
   });
 
-  test('should return false if no chessboard is given', () => {
-    expect(BishSlap()).toEqual(false);
+  test('should return undefined if there is no array passed into arguments', () => {
+    expect(radixSort.sort()).toEqual(undefined);
   });
 
-  test('should return false if pawn is not within range of bishop', () => {
-    expect(BishSlap(chessBoardTwo)).toEqual(false);
+  test('should immediately return array if it has one or zero elements', () => {
+    expect(radixSort.sort(emptyArray)).toEqual(emptyArray);
   });
 });
